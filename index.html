@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pankaj Kumar Patra — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0B0F1A;
+      --charcoal:#141926;
+      --card:    #1A2035;
+      --border:  #252D45;
+      --gold:    #C9A84C;
+      --gold-lt: #E2C87A;
+      --gold-dk: #8A6523;
+      --silver:  #8B96AE;
+      --white:   #EEF0F5;
+      --cream:   #D8C9A3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 80px 5vw 60px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 59px,
+          rgba(201,168,76,.04) 60px
+        );
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .firm-badge {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .firm-badge::before, .firm-badge::after {
+      content: '';
+      height: 1px;
+      background: var(--gold-dk);
+      flex: 1;
+    }
+    .firm-badge::before { max-width: 32px; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 7vw, 76px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    h1 span { color: var(--gold); }
+
+    .tagline {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--silver);
+      margin-top: 10px;
+      margin-bottom: 32px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 36px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: var(--cream);
+    }
+    .contact-row a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-dk);
+      transition: color .2s, border-color .2s;
+    }
+    .contact-row a:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
+    .contact-item { display: flex; align-items: center; gap: 8px; }
+    .contact-icon { color: var(--gold-dk); font-size: 13px; }
+
+    /* ── RULE ─────────────────────────────────── */
+    .gold-rule {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dk) 60%, transparent);
+      margin: 0 auto 0 0;
+      max-width: 900px;
+    }
+
+    /* ── LAYOUT ───────────────────────────────── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 5vw 80px;
+    }
+
+    /* ── SECTION ──────────────────────────────── */
+    .section { padding: 52px 0 0; }
+
+    .section-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 56px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    /* ── SUMMARY CARD ─────────────────────────── */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 26px 30px;
+      font-size: 1.05rem;
+      color: var(--cream);
+      line-height: 1.8;
+    }
+
+    /* ── EXPERIENCE / EDU ENTRY ───────────────── */
+    .entry {
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .entry:last-child { border-bottom: none; }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .entry-org {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .entry-date {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--gold);
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+
+    .entry-role {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--silver);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .entry-loc {
+      font-size: 13px;
+      color: var(--silver);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .entry-sub {
+      font-size: .93rem;
+      color: var(--silver);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bullet-list li {
+      padding-left: 22px;
+      position: relative;
+      font-size: .98rem;
+      color: var(--cream);
+    }
+    .bullet-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 12px;
+      top: 4px;
+    }
+    .bullet-list li strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── BENCHMARK ────────────────────────────── */
+    .benchmark-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .benchmark-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .benchmark-score span {
+      font-size: 1.2rem;
+      color: var(--gold-dk);
+      font-weight: 400;
+    }
+    .benchmark-info strong {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: var(--white);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .benchmark-info p {
+      font-size: .93rem;
+      color: var(--silver);
+      max-width: 520px;
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 5vw;
+      text-align: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--border);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 600px) {
+      .entry-head { flex-direction: column; }
+      .benchmark-card { flex-direction: column; gap: 16px; text-align: center; }
+      .benchmark-info p { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="firm-badge">Curriculum Vitae</div>
+    <h1>Pankaj<br/><span>Kumar Patra</span></h1>
+    <p class="tagline">MBA Candidate · Product Management & Marketing · B2B Sales</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        Bhubaneswar, Odisha
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉</span>
+        <a href="mailto:Pankajkumarpatra18@gmail.com">Pankajkumarpatra18@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <a href="tel:+918908651572">+91 89086 51572</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">🔗</span>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- SUMMARY -->
+  <section class="section">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">Professional Summary</h2>
+    <div class="summary-card">
+      MBA candidate at XIMB specializing in Business Management.
+      Combines a rigorous mathematical foundation with over two years of professional B2B corporate sales
+      execution, operational account management, and professional copy structuring. Proven success managing
+      enterprise sales pipelines, resolving high-friction cross-functional issues, and utilizing consumer
+      feedback analytics loops to enhance product design parameters. Transitioning into specialized
+      <strong>Product Management</strong> and <strong>Marketing</strong> tracks.
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <div class="section-label">Academic Record</div>
+    <h2 class="section-title">Education</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">XIM University (XIMB)</div>
+        <div class="entry-date">2026 – 2028 (Expected)</div>
+      </div>
+      <div class="entry-role">MBA in Business Management</div>
+      <div class="entry-loc">Bhubaneswar, Odisha</div>
+      <div class="entry-sub">Focus: Core Marketing Frameworks, Product Strategy &amp; Corporate Execution Systems.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">Ramanujan College, University of Delhi</div>
+        <div class="entry-date">2022 – 2025</div>
+      </div>
+      <div class="entry-role">B.Sc. (Honours) in Mathematics</div>
+      <div class="entry-loc">New Delhi</div>
+      <div class="entry-sub">Curriculum Focus: Statistical Data Logic, System Optimization Models, and Advanced Algebra.</div>
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="section-label">Track Record</div>
+    <h2 class="section-title">Professional Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">Advertis Infotech Private Limited</div>
+        <div class="entry-date">Sep 2023 – Sep 2025</div>
+      </div>
+      <div class="entry-role">Sales &amp; Customer Support Executive</div>
+      <div class="entry-loc">Remote / Hybrid</div>
+      <ul class="bullet-list">
+        <li><strong>Pipeline Orchestration:</strong> Managed end-to-end B2B sales pipelines, qualifying corporate leads and engineering tailored product pitches for prospective commercial entities.</li>
+        <li><strong>Account Management:</strong> Formulated robust account health blueprints and client success protocols, boosting overall client retention rates across high-value corporate accounts.</li>
+        <li><strong>Cross-Functional Sync:</strong> Maintained deep feedback loops with engineering and technical teams to identify UX issues, reducing platform turnaround time for complex bugs.</li>
+        <li><strong>Data-Driven Strategy:</strong> Aggregated data profiles from customer touchpoints to map funnel friction, reporting tactical upgrade roadmaps directly to the core development unit.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">LAYG</div>
+        <div class="entry-date">Prior Strategic Experience</div>
+      </div>
+      <div class="entry-role">Professional Content Writer &amp; Strategist</div>
+      <div class="entry-loc">Remote</div>
+      <ul class="bullet-list">
+        <li><strong>Content Architecture:</strong> Constructed strategic brand assets, white papers, and research pieces for technical domains to amplify organic brand placement strategies.</li>
+        <li><strong>Market Analytics:</strong> Conducted rigorous qualitative market competitive analyses to parse multifaceted corporate topics into accessible marketing material.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- BENCHMARK -->
+  <section class="section">
+    <div class="section-label">Competitive Standing</div>
+    <h2 class="section-title">Benchmarks &amp; Selection Criteria</h2>
+
+    <div class="benchmark-card">
+      <div class="benchmark-score">98.11<span>%ile</span></div>
+      <div class="benchmark-info">
+        <strong>X-GMT — Management Aptitude Test</strong>
+        <p>Achieved an exceptional national score proving superior capability in rapid quantitative
+        optimization, complex pattern resolution, logic modeling, and business data analysis.</p>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  Pankaj Kumar Patra &nbsp;·&nbsp; Bhubaneswar, Odisha &nbsp;·&nbsp; 2025
+</footer>
+
+</body>
+</html>
