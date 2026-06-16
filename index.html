@@ -1,449 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pankaj Kumar Patra — Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link 
+  ref="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:    #0B0F1A;
-      --charcoal:#141926;
-      --card:    #1A2035;
-      --border:  #252D45;
+      --navy:    #07090F;
+      --card:    #101422;
+      --card2:   #141929;
+      --border:  #1E2438;
+      --border2: #2A3350;
       --gold:    #C9A84C;
-      --gold-lt: #E2C87A;
-      --gold-dk: #8A6523;
-      --silver:  #8B96AE;
-      --white:   #EEF0F5;
-      --cream:   #D8C9A3;
+      --gold-lt: #E8D48E;
+      --gold-dk: #7A5A1E;
+      --silver:  #8090AA;
+      --white:   #ECF0F8;
+      --cream:   #CEC09A;
+      --r:       6px;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--navy);
       color: var(--white);
       font-family: 'EB Garamond', Georgia, serif;
-      font-size: 17px;
-      line-height: 1.7;
-      min-height: 100vh;
+      font-size: 17px; line-height: 1.75;
+      min-height: 100vh; overflow-x: hidden;
     }
-
-    /* ── HERO ─────────────────────────────────── */
-    .hero {
-      position: relative;
-      padding: 80px 5vw 60px;
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(201,168,76,.022) 0, rgba(201,168,76,.022) 1px, transparent 1px, transparent 80px),
+        repeating-linear-gradient(0deg,  rgba(201,168,76,.014) 0, rgba(201,168,76,.014) 1px, transparent 1px, transparent 80px);
+      pointer-events: none; z-index: 0;
+    }
+    .top-bar {
+      position: relative; z-index: 100; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-dk) 15%, var(--gold) 40%, var(--gold-lt) 55%, var(--gold) 75%, var(--gold-dk) 90%, transparent);
+    }
+    nav {
+      position: sticky; top: 0; z-index: 99;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6vw; height: 54px;
+      background: rgba(7,9,15,.94);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 59px,
-          rgba(201,168,76,.04) 60px
-        );
-      pointer-events: none;
+    .nav-brand {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--silver); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+
+    /* HERO */
+    .hero {
+      position: relative; z-index: 1;
+      padding: 80px 6vw 72px;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(ellipse 75% 55% at 65% 50%, rgba(201,168,76,.055) 0%, transparent 70%);
     }
     .hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; gap: 64px;
     }
-    .firm-badge {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .firm-badge::before, .firm-badge::after {
-      content: '';
-      height: 1px;
-      background: var(--gold-dk);
-      flex: 1;
-    }
-    .firm-badge::before { max-width: 32px; }
 
+    /* PHOTO */
+    .photo-frame {
+      position: relative; flex-shrink: 0; width: 210px;
+    }
+    .photo-frame::before {
+      content: ''; position: absolute; inset: -7px;
+      border-radius: var(--r);
+      background: linear-gradient(145deg, var(--gold) 0%, var(--gold-dk) 50%, transparent 75%);
+      z-index: 0;
+    }
+    .photo-frame img {
+      position: relative; z-index: 2;
+      width: 210px; height: 252px;
+      object-fit: cover; object-position: center top;
+      display: block; border-radius: var(--r);
+      filter: contrast(1.06) saturate(0.9);
+      box-shadow: 0 24px 64px rgba(0,0,0,.7), 0 0 0 1px rgba(201,168,76,.25);
+    }
+    .corner { position: absolute; width: 20px; height: 20px; z-index: 4; }
+    .c-tl { top:-10px; left:-10px; border-top:2px solid var(--gold); border-left:2px solid var(--gold); border-radius:2px 0 0 0; }
+    .c-tr { top:-10px; right:-10px; border-top:2px solid var(--gold); border-right:2px solid var(--gold); border-radius:0 2px 0 0; }
+    .c-bl { bottom:-10px; left:-10px; border-bottom:2px solid var(--gold); border-left:2px solid var(--gold); border-radius:0 0 0 2px; }
+    .c-br { bottom:-10px; right:-10px; border-bottom:2px solid var(--gold); border-right:2px solid var(--gold); border-radius:0 0 2px 0; }
+
+    /* HERO TEXT */
+    .cv-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 22px;
+    }
+    .cv-badge::before, .cv-badge::after {
+      content: ''; height: 1px; width: 28px; background: var(--gold-dk);
+    }
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(40px, 7vw, 76px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -.02em;
-      color: var(--white);
-      margin-bottom: 6px;
+      font-size: clamp(42px, 5.5vw, 68px);
+      font-weight: 900; line-height: 1.0; letter-spacing: -.02em; color: var(--white);
     }
-    h1 span { color: var(--gold); }
-
+    h1 span {
+      display: block; font-style: italic; font-weight: 400;
+      color: var(--gold); font-size: .75em; letter-spacing: .05em;
+    }
     .tagline {
-      font-family: 'EB Garamond', serif;
-      font-style: italic;
-      font-size: 1.15rem;
-      color: var(--silver);
-      margin-top: 10px;
-      margin-bottom: 32px;
+      margin: 16px 0 36px;
+      font-family: 'EB Garamond', serif; font-style: italic;
+      font-size: 1.1rem; color: var(--silver); letter-spacing: .03em;
     }
-
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px 36px;
+    .contacts { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+    .c-item {
+      display: flex; align-items: center; gap: 10px;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: .06em;
-      color: var(--cream);
+      font-size: 12.5px; font-weight: 500; letter-spacing: .07em; color: var(--cream);
     }
-    .contact-row a {
-      color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid var(--gold-dk);
-      transition: color .2s, border-color .2s;
+    .c-icon {
+      width: 28px; height: 28px; border: 1px solid var(--border2);
+      background: var(--card); display: flex; align-items: center;
+      justify-content: center; font-size: 13px; flex-shrink: 0; border-radius: 3px;
     }
-    .contact-row a:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
-    .contact-item { display: flex; align-items: center; gap: 8px; }
-    .contact-icon { color: var(--gold-dk); font-size: 13px; }
+    .contacts a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    .contacts a:hover { color: var(--gold-lt); }
 
-    /* ── RULE ─────────────────────────────────── */
-    .gold-rule {
-      border: none;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-dk) 60%, transparent);
-      margin: 0 auto 0 0;
-      max-width: 900px;
+    /* PAGE */
+    .page { max-width: 960px; margin: 0 auto; padding: 0 6vw 100px; position: relative; z-index: 1; }
+
+    /* SECTIONS */
+    .section {
+      padding-top: 60px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .55s ease, transform .55s ease;
     }
-
-    /* ── LAYOUT ───────────────────────────────── */
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 5vw 80px;
-    }
-
-    /* ── SECTION ──────────────────────────────── */
-    .section { padding: 52px 0 0; }
-
-    .section-label {
+    .section.visible { opacity: 1; transform: none; }
+    .sec-label {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .26em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: .34em; text-transform: uppercase;
+      color: var(--gold-dk); margin-bottom: 5px;
     }
-
-    .section-title {
+    .sec-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 28px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
+      font-size: 1.8rem; font-weight: 700; color: var(--white);
+      padding-bottom: 14px; margin-bottom: 28px;
+      border-bottom: 1px solid var(--border); position: relative;
     }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      width: 56px;
-      height: 2px;
-      background: var(--gold);
+    .sec-title::after {
+      content: ''; position: absolute; left: 0; bottom: -1px;
+      width: 50px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
     }
 
-    /* ── SUMMARY CARD ─────────────────────────── */
+    /* SUMMARY */
     .summary-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-      padding: 26px 30px;
-      font-size: 1.05rem;
-      color: var(--cream);
-      line-height: 1.8;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--card), var(--card2));
+      border: 1px solid var(--border); border-left: 3px solid var(--gold);
+      padding: 30px 36px;
+      font-size: 1.05rem; color: var(--cream); line-height: 1.88;
+      border-radius: 0 var(--r) var(--r) 0;
     }
+    .summary-card::before {
+      content: '\201C'; position: absolute; top: -20px; right: 18px;
+      font-family: 'Playfair Display', serif; font-size: 140px; line-height: 1;
+      color: rgba(201,168,76,.055); pointer-events: none;
+    }
+    .summary-card strong { color: var(--gold-lt); font-weight: 500; }
 
-    /* ── EXPERIENCE / EDU ENTRY ───────────────── */
+    /* ENTRIES */
     .entry {
-      margin-bottom: 36px;
-      padding-bottom: 36px;
-      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px 30px; margin-bottom: 14px;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
     }
-    .entry:last-child { border-bottom: none; }
-
+    .entry::before {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: linear-gradient(180deg, var(--gold), var(--gold-dk));
+      transform: scaleY(0); transform-origin: top; transition: transform .3s ease;
+    }
+    .entry:hover { transform: translateY(-2px); border-color: var(--border2); box-shadow: 0 8px 40px rgba(0,0,0,.45), 0 0 20px rgba(201,168,76,.06); }
+    .entry:hover::before { transform: scaleY(1); }
     .entry-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 4px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 8px; margin-bottom: 3px;
     }
-
-    .entry-org {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
+    .entry-org { font-family: 'Playfair Display', serif; font-size: 1.18rem; font-weight: 700; color: var(--white); }
     .entry-date {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      color: var(--gold);
-      white-space: nowrap;
-      margin-top: 4px;
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
+      color: var(--gold); background: rgba(201,168,76,.09);
+      border: 1px solid rgba(201,168,76,.2);
+      padding: 3px 11px; border-radius: 2px; white-space: nowrap;
     }
-
     .entry-role {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      color: var(--silver);
-      text-transform: uppercase;
-      margin-bottom: 2px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--silver); margin-bottom: 2px;
     }
-    .entry-loc {
-      font-size: 13px;
-      color: var(--silver);
-      font-style: italic;
-      margin-bottom: 16px;
+    .entry-loc { font-size: 12.5px; color: var(--silver); font-style: italic; margin-bottom: 16px; opacity: .7; }
+    .entry-focus {
+      font-size: .9rem; color: var(--silver); font-style: italic;
+      padding: 9px 14px; background: rgba(255,255,255,.025);
+      border-left: 2px solid var(--border2); border-radius: 0 3px 3px 0;
     }
-    .entry-sub {
-      font-size: .93rem;
-      color: var(--silver);
-      font-style: italic;
-      margin-bottom: 14px;
-    }
+    .bullets { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .bullets li { padding-left: 22px; position: relative; font-size: .97rem; color: var(--cream); }
+    .bullets li::before { content: '\25B8'; position: absolute; left: 0; top: 5px; color: var(--gold); font-size: 11px; }
+    .bullets li strong { color: var(--white); font-weight: 600; }
 
-    .bullet-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    /* HOBBIES */
+    .hobbies-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hobby-chip {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 4px; padding: 12px 22px;
+      font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--cream);
+      transition: border-color .2s, box-shadow .2s;
     }
-    .bullet-list li {
-      padding-left: 22px;
-      position: relative;
-      font-size: .98rem;
-      color: var(--cream);
-    }
-    .bullet-list li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-size: 12px;
-      top: 4px;
-    }
-    .bullet-list li strong {
-      color: var(--white);
-      font-weight: 600;
-    }
+    .hobby-chip:hover { border-color: var(--gold-dk); box-shadow: 0 0 16px rgba(201,168,76,.1); }
+    .hobby-icon { font-size: 20px; }
 
-    /* ── BENCHMARK ────────────────────────────── */
-    .benchmark-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 28px 32px;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      flex-wrap: wrap;
+    /* BENCHMARK */
+    .bench-card {
+      position: relative; overflow: hidden;
+      background: linear-gradient(130deg, var(--card), #0C101D);
+      border: 1px solid var(--border); border-radius: var(--r);
+      padding: 36px 40px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap;
     }
-    .benchmark-score {
+    .bench-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 0% 50%, rgba(201,168,76,.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+     .bench-score {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-      flex-shrink: 0;
+      font-size: 4.2rem; font-weight: 900; line-height: 1;
+      color: var(--gold); flex-shrink: 0;
+      text-shadow: 0 0 50px rgba(201,168,76,.4);
     }
-    .benchmark-score span {
-      font-size: 1.2rem;
-      color: var(--gold-dk);
-      font-weight: 400;
+    .bench-score sup { font-size: 1.3rem; color: var(--gold-dk); font-weight: 400; }
+    .bench-vr {
+      width: 1px; height: 68px; flex-shrink: 0;
+      background: linear-gradient(180deg, transparent, var(--gold-dk) 30%, var(--gold-dk) 70%, transparent);
     }
-    .benchmark-info strong {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      color: var(--white);
-      display: block;
-      margin-bottom: 6px;
+    .bench-body strong {
+      font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; font-weight: 700;
+      letter-spacing: .08em; color: var(--white); display: block; margin-bottom: 8px;
     }
-    .benchmark-info p {
-      font-size: .93rem;
-      color: var(--silver);
-      max-width: 520px;
-    }
+    .bench-body p { font-size: .93rem; color: var(--silver); max-width: 460px; line-height: 1.7; }
 
-    /* ── FOOTER ───────────────────────────────── */
+    /* FOOTER */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 5vw;
-      text-align: center;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--border);
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border); padding: 30px 6vw;
     }
+    .footer-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; gap: 18px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--border2);
+    }
+    .footer-gem { color: var(--gold-dk); font-size: 8px; }
 
-    /* ── RESPONSIVE ───────────────────────────── */
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
+      .hero-inner { flex-direction: column; align-items: center; text-align: center; }
+      .hero-text { order: 2; }
+      .photo-frame { order: 1; }
+      .cv-badge, .contacts { justify-content: center; }
+      .nav-links { display: none; }
       .entry-head { flex-direction: column; }
-      .benchmark-card { flex-direction: column; gap: 16px; text-align: center; }
-      .benchmark-info p { text-align: left; }
+      .bench-card { flex-direction: column; }
+      .bench-vr { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .section { opacity: 1; transform: none; }
+      .entry:hover { transform: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
+<div class="top-bar"></div>
+
+<nav>
+  <div class="nav-brand">Pankaj Kumar Patra</div>
+  <ul class="nav-links">
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+    <li><a href="#benchmarks">Benchmarks</a></li>
+  </ul>
+</nav>
+
 <header class="hero">
   <div class="hero-inner">
-    <div class="firm-badge">Curriculum Vitae</div>
-    <h1>Pankaj<br/><span>Kumar Patra</span></h1>
-    <p class="tagline">MBA Candidate · Product Management & Marketing · B2B Sales</p>
-    <div class="contact-row">
-      <div class="contact-item">
-        <span class="contact-icon">📍</span>
-        Bhubaneswar, Odisha
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon">✉</span>
-        <a href="mailto:Pankajkumarpatra18@gmail.com">Pankajkumarpatra18@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon">📞</span>
-        <a href="tel:+918908651572">+91 89086 51572</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon">🔗</span>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn Profile</a>
+    <div class="hero-text">
+      <div class="cv-badge">Curriculum Vitae</div>
+      <h1>Pankaj<span>Kumar Patra</span></h1>
+      <p class="tagline">MBA Candidate &nbsp;&middot;&nbsp; Product Management &amp; Marketing &nbsp;&middot;&nbsp; B2B Sales</p>
+      <div class="contacts">
+        <div class="c-item"><div class="c-icon">&#128205;</div>Bhubaneswar, Odisha</div>
+             <div class="c-item"><div class="c-icon">&#9993;</div><a href="mailto:Pankajkumarpatra18@gmail.com">Pankajkumarpatra18@gmail.com</a></div>
+        <div class="c-item"><div class="c-icon">&#128222;</div><a href="tel:+918908651572">+91 89086 51572</a></div>
+        <div class="c-item"><div class="c-icon">&#128279;</div><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></div>
       </div>
     </div>
-  </div>
-</header>
-
-<div class="page">
-
-  <!-- SUMMARY -->
-  <section class="section">
-    <div class="section-label">Overview</div>
-    <h2 class="section-title">Professional Summary</h2>
-    <div class="summary-card">
-      MBA candidate at XIMB specializing in Business Management.
-      Combines a rigorous mathematical foundation with over two years of professional B2B corporate sales
-      execution, operational account management, and professional copy structuring. Proven success managing
-      enterprise sales pipelines, resolving high-friction cross-functional issues, and utilizing consumer
-      feedback analytics loops to enhance product design parameters. Transitioning into specialized
-      <strong>Product Management</strong> and <strong>Marketing</strong> tracks.
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section">
-    <div class="section-label">Academic Record</div>
-    <h2 class="section-title">Education</h2>
-
-    <div class="entry">
-      <div class="entry-head">
-        <div class="entry-org">XIM University (XIMB)</div>
-        <div class="entry-date">2026 – 2028 (Expected)</div>
-      </div>
-      <div class="entry-role">MBA in Business Management</div>
-      <div class="entry-loc">Bhubaneswar, Odisha</div>
-      <div class="entry-sub">Focus: Core Marketing Frameworks, Product Strategy &amp; Corporate Execution Systems.</div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <div class="entry-org">Ramanujan College, University of Delhi</div>
-        <div class="entry-date">2022 – 2025</div>
-      </div>
-      <div class="entry-role">B.Sc. (Honours) in Mathematics</div>
-      <div class="entry-loc">New Delhi</div>
-      <div class="entry-sub">Curriculum Focus: Statistical Data Logic, System Optimization Models, and Advanced Algebra.</div>
-    </div>
-
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section">
-    <div class="section-label">Track Record</div>
-    <h2 class="section-title">Professional Experience</h2>
-
-    <div class="entry">
-      <div class="entry-head">
-        <div class="entry-org">Advertis Infotech Private Limited</div>
-        <div class="entry-date">Sep 2023 – Sep 2025</div>
-      </div>
-      <div class="entry-role">Sales &amp; Customer Support Executive</div>
-      <div class="entry-loc">Remote / Hybrid</div>
-      <ul class="bullet-list">
-        <li><strong>Pipeline Orchestration:</strong> Managed end-to-end B2B sales pipelines, qualifying corporate leads and engineering tailored product pitches for prospective commercial entities.</li>
-        <li><strong>Account Management:</strong> Formulated robust account health blueprints and client success protocols, boosting overall client retention rates across high-value corporate accounts.</li>
-        <li><strong>Cross-Functional Sync:</strong> Maintained deep feedback loops with engineering and technical teams to identify UX issues, reducing platform turnaround time for complex bugs.</li>
-        <li><strong>Data-Driven Strategy:</strong> Aggregated data profiles from customer touchpoints to map funnel friction, reporting tactical upgrade roadmaps directly to the core development unit.</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <div class="entry-org">LAYG</div>
-        <div class="entry-date">Prior Strategic Experience</div>
-      </div>
-      <div class="entry-role">Professional Content Writer &amp; Strategist</div>
-      <div class="entry-loc">Remote</div>
-      <ul class="bullet-list">
-        <li><strong>Content Architecture:</strong> Constructed strategic brand assets, white papers, and research pieces for technical domains to amplify organic brand placement strategies.</li>
-        <li><strong>Market Analytics:</strong> Conducted rigorous qualitative market competitive analyses to parse multifaceted corporate topics into accessible marketing material.</li>
-      </ul>
-    </div>
-
-  </section>
-
-  <!-- BENCHMARK -->
-  <section class="section">
-    <div class="section-label">Competitive Standing</div>
-    <h2 class="section-title">Benchmarks &amp; Selection Criteria</h2>
-
-    <div class="benchmark-card">
-      <div class="benchmark-score">98.11<span>%ile</span></div>
-      <div class="benchmark-info">
-        <strong>X-GMT — Management Aptitude Test</strong>
-        <p>Achieved an exceptional national score proving superior capability in rapid quantitative
-        optimization, complex pattern resolution, logic modeling, and business data analysis.</p>
-      </div>
-    </div>
-
-  </section>
-
-</div>
-
-<footer>
-  Pankaj Kumar Patra &nbsp;·&nbsp; Bhubaneswar, Odisha &nbsp;·&nbsp; 2025
-</footer>
-
-</body>
-</html>
+    <div class="photo-frame">
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <img    
+  src="data:image/png;base64,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
